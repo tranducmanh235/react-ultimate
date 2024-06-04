@@ -12,13 +12,21 @@ class MyComponent extends React.Component {
         age: 25,
     };
 
-    handleClick(event) {
+    handleClick = (event) => {
         console.log(">>> Click me!");
-        console.log("My Name is ", this.state.name);
-    }
+        console.log("random ", Math.floor(Math.random() * 100 + 1));
+
+        this.setState({
+            name: "Tdmx4",
+        });
+
+        this.setState({
+            age: Math.floor(Math.random() * 100 + 1),
+        });
+    };
 
     handleOnMoverover(event) {
-        console.log(event.pageX);
+        // console.log(event.pageX);
     }
 
     // JSX
@@ -26,9 +34,15 @@ class MyComponent extends React.Component {
         return (
             <div>
                 My Name is {this.state.name + " "}
-                and My address is {this.state.address}
+                and My age is {this.state.age}
                 <button onMouseOver={this.handleOnMoverover}>Hover me</button>
-                <button onClick={this.handleClick}>Click me</button>
+                <button
+                    onClick={(event) => {
+                        this.handleClick(event);
+                    }}
+                >
+                    Click me
+                </button>
             </div>
         );
     }
